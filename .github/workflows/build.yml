@@ -16,9 +16,11 @@ jobs:
         id: sha
         run: echo "::set-output name=shortsha::$(cd $GITHUB_WORKSPACE && git log --pretty=format:'%h' -n 1)"
 
-      - name: Build Dev Docker
+      - name: Build buildx
         run: make install
 
+      - name: List Files
+        run: ls -alR .
       
       - name: rename build
         run: sudo mv hadoop-dist/target/hadoop-3.4.0-SNAPSHOT.tar.gz hadoop-dist/target/hadoop-3.4.0-SNAPSHOT-${{ steps.sha.outputs.shortsha }}.tar.gz
