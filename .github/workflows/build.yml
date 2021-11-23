@@ -23,7 +23,7 @@ jobs:
         run: ls -alR .
       
       - name: rename build
-        run: sudo mv hadoop-dist/target/hadoop-3.4.0-SNAPSHOT.tar.gz hadoop-dist/target/hadoop-3.4.0-SNAPSHOT-${{ steps.sha.outputs.shortsha }}.tar.gz
+        run: sudo mv bin/buildx bin/buildx-${{ steps.sha.outputs.shortsha }}
 
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
@@ -31,4 +31,4 @@ jobs:
           automatic_release_tag: "final"
           prerelease: false
           title: "Build"
-          files: hadoop-dist/target/hadoop*gz
+          files: bin/buildx*
