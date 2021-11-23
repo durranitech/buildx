@@ -7,12 +7,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout hadoop repository
+      - name: Checkout buildx repository
         uses: actions/checkout@v2
         with:
-          repository: dcoker/buildx
+          repository: docker/buildx
 
-      - name: Get SHA for hadoop repo
+      - name: Get SHA for buildx repo
         id: sha
         run: echo "::set-output name=shortsha::$(cd $GITHUB_WORKSPACE && git log --pretty=format:'%h' -n 1)"
 
